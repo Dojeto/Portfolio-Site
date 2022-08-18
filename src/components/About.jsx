@@ -5,26 +5,19 @@ import codebin from '../assets/CodeBin.jpeg'
 
 const About = ()=>{
 
-    /*=============== FILTERS TABS ===============*/
-const tabs = document.querySelectorAll('[data-target]'),
-tabContents = document.querySelectorAll('[data-content]')
+    const [first,Stateinfo] = React.useState(true);
+    const [second,secStateinfo] = React.useState(false);
 
-tabs.forEach(tab => {
-tab.addEventListener('click', () => {
-    const target = document.querySelector(tab.dataset.target)
+    const skills = ()=>{
+        Stateinfo(false)
+        secStateinfo(true)
+    }
 
-    tabContents.forEach(tc => {
-        tc.classList.remove('filters__active')
-    })
-    target.classList.add('filters__active')
-
-    tabs.forEach(t => {
-        t.classList.remove('filter-tab-active')
-    })
-    tab.classList.add('filter-tab-active')
-})
-})
-
+        const projects = ()=>{
+        Stateinfo(true)
+        secStateinfo(false)
+    }
+    
     return(
         <div section="aboutme" className="aboutme">
             <h1>About me </h1>
@@ -42,16 +35,16 @@ tab.addEventListener('click', () => {
         <main class="main">
         <section class="filters container">
             <ul class="filters__content">
-                <button class="filters__button filter-tab-active" data-target="#projects">
+                <button onClick={projects} class="filters__button filter-tab-active" data-target="#projects">
                     Projects
                 </button>
-                <button class="filters__button" data-target="#skills">
+                <button onClick={skills} class="filters__button " data-target="#skills">
                     Skills / Tools
                 </button>
             </ul>
 
             <div class="filters__sections">
-                <div class="projects__content grid filters__active" data-content id="projects">
+                <div class="projects__content grid projects" className={first ? 'filters__active' : ''} data-content id="projects">
 
                     <article class="projects__card">
                         <img src={linkshortener} alt="" class="projects__img"/>
@@ -83,7 +76,7 @@ tab.addEventListener('click', () => {
                         </div>
                     </article>
                 </div>
-                <div class="skills__content grid" data-content id="skills">
+                <div class="skills__content grid" className={second ? 'filters__active' : ''} data-content id="skills">
                     <div class="skills__area">
                         <h3 class="skills__title">Web Development</h3>
 

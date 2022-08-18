@@ -9,6 +9,7 @@ const App = ()=>{
     return (
     <>
         <AnimatedCursor
+      hasBlendMode={true}
       innerSize={0}
       outerSize={8}
       color='255, 255, 255'
